@@ -1,14 +1,13 @@
 import domReady from '@roots/sage/client/dom-ready';
 import { toogler, getParentNode, stilist } from "./helpers.js"
-import { tester } from "./custom-menu"
+import { customMenu } from "./custom-menu"
 /**
  * Application entrypoint
  */
 domReady(async () => {
 
-  await tester()
-  // const mobileMenuButton = document.querySelector('.mobile-menu-button');
-  // const mobileMenu = document.querySelector('.mobile-menu');
+  await customMenu()
+
   const showPcMenuButton = document.getElementById('show-menu-pc')
   const NavPc = document.getElementById('nav-pc')
   const NavMobile = document.getElementById('nav-mobile')
@@ -19,16 +18,14 @@ domReady(async () => {
     if(NavPc){
       toogler(menuBgElement)
       toogler(NavPc)
-      // return
     }
     if(NavMobile){
       toogler(menuBgElement)
       toogler(NavMobile)
-      // return
-      
     }
   });
 });
+
 (()=>
   {
       console.log("%c%s", "color: red; background: yellow; font-size: 62px;", "НЕБЕЗПЕЧНА ЗОНА ФРОНТЕНД!")

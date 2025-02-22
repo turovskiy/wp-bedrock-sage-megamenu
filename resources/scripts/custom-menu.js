@@ -1,7 +1,6 @@
 import { toogler, getParentNode, stilist } from "./helpers.js"
 
-export async function tester(){
-  console.log('~~~~~~~~~~~~~~~tester~~~~~~~~~~~~~~~~~~~')
+export async function customMenu(){
 
   document.addEventListener('click', (e)=>{
     const target = e.target
@@ -32,7 +31,7 @@ export async function tester(){
     console.log('~~~~~~~~~~~~~~~targetLi~~~~~~~~~~~~~~~~~~', targetLi)
     console.log('~~~~~~~~~~~~~~~targetLiDataMobileMenu~~~~~~~~~~~~~~~~~', targetLiDataMobileMenu)
     
-    const path = targetLi
+    const path = targetLi?.dataset?.path ? targetLi.dataset.path : null
     const isParentElement = targetLi?.classList 
     ? [...targetLi?.classList].includes('without-parent') 
     : null
@@ -47,6 +46,7 @@ export async function tester(){
       const isLiHasSubMenu = targetLi.querySelector('.submenu-wrapper') 
       const liSvgElement = targetLi.querySelector('svg')
       const isHasHidden = (el)=> el.classList('hidden')
+
       liSvgElement 
       ? stilist(liSvgElement, {
         rotate :liSvgElement.style.rotate === "90deg" 
@@ -55,17 +55,16 @@ export async function tester(){
       })
       : null
       console.log('~~~~~isLiHasSubMenu==>', isLiHasSubMenu)
-      // isHasHidden && 
-      isLiHasSubMenu.classList.toggle('hidden')
-      // isLiHasSubMenu 
-      // ? isLiHasSubMenu?.classList?.remove?.('hidden') 
-      // : isLiHasSubMenu?.classList?.add?.('hidden')
 
-      // isLiHasSubMenu &&  Object.assign(isLiHasSubMenu.parentElement.style,{left:'-50%'})
+      isLiHasSubMenu.classList.toggle('hidden')
       
+      const hasChildren = targetLi.classList('menu-item-has-children')
+      if(!hasChildren){
+        window.location['href']=path
+      }
     })()
     : (()=>{
-
+      path ? window.location['href']=path : null
     })()
     // if(condition){
     //     window.location['href']=path
@@ -74,15 +73,3 @@ export async function tester(){
     // }
   })
 } 
-
-// function getParentNode(el, tagName) {
-//   while (el && el.parentNode) {
-//     el = el.parentNode;
-    
-//     if (el && el.tagName == tagName.toUpperCase()) {
-//       return el;
-//     }
-//   }
-  
-//   return null;
-// }
