@@ -58,6 +58,15 @@ h1 {
 .without-parent {
     max-width: 30%;
 }
+
+.menu-item-has-children {
+    position: relative;
+}
+/* s */
+.submenu-wrapper {
+    transition: opacity 0.2s ease-in-out;
+    opacity: 1;
+}
 @media only screen and (max-device-width: 480px) {
     /* styles for mobile browsers smaller than 480px; (iPhone) */
     .without-parent {
@@ -74,17 +83,23 @@ h1 {
         transition: opacity 0.3s ease;
         background-color: gray;
     }
+    .group\/hasparent {
+        padding-left: 10vw;
+    }
+    li:hover > .pc-has-children-classes {
+        color: white;
+    }
+    h1 {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        text-wrap: balance;
+        font-size: 1rem;
+        line-height: 1.25rem;
+        text-align: center;
+    }
  }
 
-.menu-item-has-children {
-    position: relative;
-}
-/* s */
-.submenu-wrapper {
-    transition: opacity 0.2s ease-in-out;
-    opacity: 1;
-}
 
-/* .group:hover > .submenu-wrapper {
-    opacity: 1;
-} */

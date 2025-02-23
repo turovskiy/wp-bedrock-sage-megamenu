@@ -45,7 +45,6 @@ export async function customMenu(){
 
       const isLiHasSubMenu = targetLi.querySelector('.submenu-wrapper') 
       const liSvgElement = targetLi.querySelector('svg')
-      const isHasHidden = (el)=> el.classList('hidden')
 
       liSvgElement 
       ? stilist(liSvgElement, {
@@ -58,7 +57,10 @@ export async function customMenu(){
 
       isLiHasSubMenu.classList.toggle('hidden')
       
-      const hasChildren = targetLi.classList('menu-item-has-children')
+      const hasChildren = targetLi?.classList
+      ? [...targetLi?.classList].includes('menu-item-has-children') 
+      : null
+
       if(!hasChildren){
         window.location['href']=path
       }

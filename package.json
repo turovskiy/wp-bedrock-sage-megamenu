@@ -10,7 +10,6 @@
   "type": "module",
   "scripts": {
     "dev": "bud dev",
-    "watch": "npx @tailwindcss/cli -i ./resources/styles/app.css -o ./public/css/app.19e137.css --watch",
     "build": "bud build",
     "translate": "npm run translate:pot && npm run translate:update",
     "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --include=\"theme.json,patterns,app,resources\"",
